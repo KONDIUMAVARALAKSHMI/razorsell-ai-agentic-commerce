@@ -1,0 +1,38 @@
+# Environment / secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Node / frontend
+node_modules/
+dist/
+frontend/dist/
+.vite/
+
+# Evaluation artifacts
+evaluation/results.json
+backend/evaluation_run.db
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Docker
+*.pid
