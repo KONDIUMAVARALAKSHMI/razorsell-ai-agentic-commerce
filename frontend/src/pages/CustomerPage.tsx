@@ -176,9 +176,9 @@ export default function CustomerPage() {
       const idemKey = newIdempotencyKey();
       const order = await api.confirmCheckout(sessionId, userId, idemKey);
       setCheckoutPreview(null);
-      // First attempt defaults to SUCCESS unless the reviewer explicitly
-      // forces a failure from the payment result panel (demo requirement).
-      const attempt = await api.attemptPayment(order.order_id!, "SUCCESS");
+      // Initial attempt triggers simulated failure to demonstrate the mandatory
+      // failure recovery, retry policy, and idempotency features for the demo.
+      const attempt = await api.attemptPayment(order.order_id!, "FAILURE");
       const fullOrder = await api.getOrder(order.order_id!);
       setActiveOrder(fullOrder);
       void attempt;

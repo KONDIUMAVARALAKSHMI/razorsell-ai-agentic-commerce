@@ -47,7 +47,9 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     if (!envelope.ok) {
       throw new ApiError(envelope.error || "Request failed", res.status);
     }
-    return envelope.data;
+    if ("data" in body) {
+      return envelope.data;
+    }
   }
   return body as T;
 }

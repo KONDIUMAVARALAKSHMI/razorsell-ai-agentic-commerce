@@ -56,6 +56,16 @@ def on_startup() -> None:
     Base.metadata.create_all(bind=engine)
 
 
+@app.get("/")
+def root():
+    return {
+        "app": settings.APP_NAME,
+        "status": "running",
+        "docs": "/docs",
+        "health": "/api/v1/health",
+    }
+
+
 @app.get("/api/v1/health")
 def health_check():
     return {"status": "ok", "ai_provider": settings.AI_PROVIDER, "payment_provider": settings.PAYMENT_PROVIDER}
